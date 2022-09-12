@@ -10,5 +10,4 @@ export default interface IShellContext {
     setLastCommandIndex: (index: number) => void;
     execute: (command: string) => Promise<void>;
     clearHistory: () => void;
-
 }

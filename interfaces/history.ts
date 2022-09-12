@@ -1,4 +1,3 @@
-
 export default interface IShellHistory {
     id: number;
     date: Date;

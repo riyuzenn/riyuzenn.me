@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 html {
-    font-family: 'JetBrains Mono';
+    font-family: "JetBrains Mono";
     font-size: 14px;
 }
