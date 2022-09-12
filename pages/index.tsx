@@ -82,8 +82,8 @@ const PBootloader = () => {
                     <h1 className="w-[50%]">
                         Use the <span className="px-2">&uarr;</span>
                         and <span className="px-2">&darr;</span> keys to select which entry is higlighted. Press enter
-                        to boot the selected environment, `n` to enter the normal mode before booting or `c` for
-                        command-line
+                        to boot the selected environment, `n` to enter the normal mode (yuzu) or `c` for
+                        command-line (haruka).
                     </h1>
                 </div>
             </div>
