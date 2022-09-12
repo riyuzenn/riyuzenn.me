@@ -7,7 +7,9 @@ function riyu({ Component, pageProps }: AppProps) {
     return (
         <React.Fragment>
             <ThemeProvider attribute="class" defaultTheme="dark">
-                <Component {...pageProps} />
+                <div className="bg-[#000] text-[#a0a0a0]">
+                    <Component {...pageProps} />
+                </div>
             </ThemeProvider>
         </React.Fragment>
     );
