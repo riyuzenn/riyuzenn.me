@@ -19,6 +19,10 @@ const PBootloader = () => {
         },
     });
     useEffect(() => {
+      window.addEventListener('keydown', (e) => {
+        if(e.key == "e") router.push("https://n.riyuzenn.me");
+        if(e.key == "c") router.push("https://riyuzenn.me/?ref=riyu");
+      });
         if (timeLeft === 0) {
             setTimeLeft(0);
             router.push(`${data[index].url}`);
