@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useKeyboardListNavigation } from "use-keyboard-list-navigation";
 import { useRouter } from "next/router";
 import data from "../lib/data";
+import { isMobile } from "react-device-detect";
 
 interface Type {
     name: string;
     url: String;
 }
-const PBootloader = () => {
+const Bootloader = () => {
     const router = useRouter();
     const [timeLeft, setTimeLeft] = useState(10);
     const [stopTimer, setStopTimer] = useState(false);
@@ -19,10 +20,14 @@ const PBootloader = () => {
         },
     });
     useEffect(() => {
-      window.addEventListener('keydown', (e) => {
-        if(e.key == "n") router.push("https://n.riyuzenn.me");
-        if(e.key == "c") router.push("https://riyuzenn.me/?ref=riyu");
-      });
+        if (isMobile) setStopTimer(true);
+        if (!isMobile) {
+            window.addEventListener('keydown', (e) => {
+                if(e.key == "n") router.push("https://n.riyuzenn.me");
+                if(e.key == "c") router.push("https://riyuzenn.me/?ref=riyu");
+            });
+        }
+        
         if (timeLeft === 0) {
             setTimeLeft(0);
             router.push(`${data[index].url}`);
@@ -33,10 +38,6 @@ const PBootloader = () => {
 
         // save intervalId to clear the interval when the
         // component re-renders
-        console.log(index);
-        if (index > 0) {
-            console.log("stop");
-        }
         const intervalId =
             index === 0
                 ? setInterval(() => {
@@ -63,7 +64,7 @@ const PBootloader = () => {
                         <p className={`${stopTimer ? "invisible" : "block"} pt-3`}>Booting in {timeLeft}s</p>
                     </div>
 
-                    <div className="h-full w-[60%] border border-[#656565] px-2 py-5">
+                    <div className="h-full w-full xl:w-[60%] border border-[#656565] px-2 py-5">
                         <ul className="space-y-1">
                             {data.map((value: Type, i: number) => {
                                 return (
@@ -83,7 +84,7 @@ const PBootloader = () => {
                             })}
                         </ul>
                     </div>
-                    <h1 className="w-[50%]">
+                    <h1 className="w-[70%] xl:w-[50%]">
                         Use the <span className="px-2">&uarr;</span>
                         and <span className="px-2">&darr;</span> keys to select which entry is higlighted. Press enter
                         to boot the selected environment, `n` to enter the normal mode (yuzu) or `c` for
@@ -107,7 +108,7 @@ const Home: NextPage = () => {
         if (params.get("ref") === "riyu") b(true);
     }, []);
 
-    return <React.Fragment>{a ? <Commandline /> : <PBootloader />}</React.Fragment>;
+    return <React.Fragment>{a ? <Commandline /> : <Bootloader />}</React.Fragment>;
 };
 
 export default Home;
