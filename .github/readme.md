@@ -1,3 +1,2 @@
-## riyu
-
-Another TUI (Text User Interface) inspired portfolio
+## riyuzenn.me
+grub style web app
