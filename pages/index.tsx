@@ -57,7 +57,7 @@ const Bootloader = () => {
             <div className="flex min-h-screen ">
                 <div className="flex flex-col space-y-10 items-center px-10 py-10 w-full">
                     <div className="flex flex-col items-center">
-                        <h1 className="text-[#fff]">GNU GRUB version 2.02</h1>
+                        <h1 className="text-[#fff]">GNU GRUB version 2.06</h1>
                         <p className="">
                             Welcome to GNU Grub bootloader, please choose the specific environment to boot.
                         </p>
