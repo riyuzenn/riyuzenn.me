@@ -2,13 +2,15 @@ import type { NextPage } from "next";
 import React, { useEffect, useState } from "react";
 import { useKeyboardListNavigation } from "use-keyboard-list-navigation";
 import { useRouter } from "next/router";
-import data from "../lib/data";
+import data, { BASE_DOMAIN } from "../lib/data";
 import { isMobile } from "react-device-detect";
 
 interface Type {
     name: string;
     url: String;
 }
+
+
 const Bootloader = () => {
     const router = useRouter();
     const [timeLeft, setTimeLeft] = useState(10);
@@ -23,8 +25,8 @@ const Bootloader = () => {
         if (isMobile) setStopTimer(true);
         if (!isMobile) {
             window.addEventListener('keydown', (e) => {
-                if(e.key == "n") router.push("https://n.riyuzenn.me");
-                if(e.key == "c") router.push("https://riyuzenn.me/?ref=riyu");
+                if(e.key == "n") router.push(`https://n.${BASE_DOMAIN}`);
+                if(e.key == "c") router.push(`https://${BASE_DOMAIN}/?ref=riyu`);
             });
         }
         
